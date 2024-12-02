@@ -79,6 +79,7 @@ body {
     padding: 1em;
     color: var(--TASrood);
     align-items: center;
+    margin-top: 2em;
   }
 
   nav p {
@@ -136,7 +137,7 @@ body {
 
 section:first-of-type {
     padding: 0;
-    padding-top: 5.5em;
+    padding-top: 7.5em;
 }
 
 section {
@@ -400,31 +401,39 @@ input, select {
   
   .ticker-wrap {
     width: 100dvw;
-    height: 80px;
     margin: 0 auto;
-    margin-left: -1.5em;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
-    bottom: 0;
-    height: 5rem;
+    height: 2rem;
     background-color: var(--TASrood); 
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    align-items: center;
   }
   .ticker {
     display: inline-block;
-    margin-top: 1.5em;
     animation: marquee 30s linear infinite;
   }
 
   .item {
     display: inline-block;
     padding: 0;
-    font-size: 2rem;
+    font-size: 1rem;
     color: white;   
-    font-weight: 500;
     margin-right: 3em;
   }
-  
+
+  .notice {
+    font-weight: 900;
+    background: white;
+    color: var(--TASrood);
+    border-radius: 6px;
+    padding: 1em;
+    margin-right: .5em;
+  }
+
   /* Transition */
   @keyframes marquee {
     0% {
@@ -566,3 +575,33 @@ input, select {
       display: none;
     }
   }
+
+  /* msg */
+
+.announcement-board {
+  font-family: 'Jersey 10';
+  background-color: black;
+  color: orange;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: auto;
+  min-height: 15vh;
+  width: 100dvw;
+  margin: 0;
+  margin-left: -1.5em;
+  overflow: hidden;
+  text-align: left;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.message {
+    display: none;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.message.active {
+    display: block;
+}
