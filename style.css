@@ -72,26 +72,29 @@ body {
     z-index: 999;
     width: 100dvw;
     height: 5.5em;
-    border-bottom: #fff 3px solid;
+    border-bottom: #D82331 3px solid;
     box-sizing: border-box;
     justify-content: space-between;
-    background-color: var(--TASrood);
+    background-color: white;
     padding: 1em;
-    color: white;
+    color: var(--TASrood);
     align-items: center;
   }
 
   nav p {
     line-height: 0 !important;
+    margin: 0;
   }
 
   nav div {
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    padding-left: 1em;
+    gap: 12px;
   }
 
   nav div img {
-    width: 72px;
+    width: 82px;
   }
 
   nav img {
@@ -139,6 +142,10 @@ section:first-of-type {
 section {
     padding: 1.5em;
     padding-bottom: 2em;
+}
+
+#welkom {
+    padding-bottom: 0;;
 }
 
 section h1 {
