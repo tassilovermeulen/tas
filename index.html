@@ -1,1 +1,231 @@
-pipo.nl
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAS Rail Rotterdam - Home</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div>
+            <img src="TAS-logowit.svg" alt="Logo van TAS">
+            <p>· onderweg voor jou</p>
+        </div>
+        <img src="menu.svg" alt="Menuknop (deco)">
+    </nav>
+    <section>
+        <div id="slider">
+            <figure>
+                <img src="Rec1.png">
+                <img src="Rec2.png">
+                <img src="Rec3.png">
+            </figure>
+        </div>
+    </section>
+    <section id="welkom">
+        <h1>— Welkom</h1>
+        <h2>Er zijn op dit moment slechts 392 verstoringen.</h2>
+        <p>TAS is onderweg voor jou. Samen werken we aan de beste reiservaring.</p>
+        <div id="knoppen">
+            <button>
+                <img src="storing.png" alt="Deco">
+                <p>Verstoringen (392)</p>
+            </button>
+            <button>
+                <img src="benjeechtzoboos.png" alt="Deco">
+                <p>Klachtenloket</p>
+            </button>
+            <button>
+                <img src="info.png" alt="Deco">
+                <p>Nieuws</p>
+            </button>
+        </div>
+    </section>
+    <section id="tickets">
+        <h1>— Tickets</h1>
+        <h2>Regel je kaartje makkelijk online</h2>
+        <p>Via de online ticketwinkel van TAS koop je eenvoudig een ticket voor het gezelligste fuifje van het jaar. Vul je informatie in en download je ticket. Zo simpel is het!</p>
+        <div class="progress-bar">
+            <div class="progress-step active" data-step="1">1</div>
+            <div class="progress-step" data-step="2">2</div>
+            <div class="progress-step" data-step="3">3</div>
+          </div>
+        
+          <form id="ticketForm">
+            <div class="step active">
+              <label for="name">Naam</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="step">
+              <label for="persons">Aantal personen (minimaal 1 (jij) en "maximaal" 2)</label>
+              <input type="number" id="persons" min="1" max="2" required>
+            </div>
+            <div class="step">
+              <label for="class">Klasse:</label>
+              <select id="class" required>
+                <option value="1E KLAS">1e klasse</option>
+                <option value="2E KLAS">2e klasse</option>
+                <option value="ZWERRIE">Zwartrijden</option>
+                <option value="1E/SLAAP">1e klasse (Slaaptrein, zeer beperkt, moet bevestigd worden)</option>
+              </select>
+              
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="prev-btn" disabled>Vorige</button>
+              <button type="button" class="next-btn">Volgende</button>
+            </div>
+          </form>
+          <div class="success-message">
+            <div class="checkmark"><img src="check.png" alt=""></div>
+            <h2>Gelukt!</h2>
+            <p>Je ticket is aangemaakt. Download hem en <b>stuur hem door aan mij zodat ik weet dat je er bij bent :)!</b></p>
+            <button id="generateTicket">
+                <img src="menu.svg" alt="Deco">
+                <p>Download mijn ticket</p>
+            </button>
+          </div>
+        
+    </section>
+    <footer>
+        <div>
+            <img src="TAS-logowit.svg" alt="Logo van TAS">
+            <p>· onderweg voor jou</p>
+        </div>
+        <div>
+            <h3>Informatie</h5>
+            <a href="#">Klantenservice</a>
+            <a href="#">Algemene voorwaarden</a>
+            <a href="#">Reisplanner</a>
+            <a href="#">Lijnennet</a>
+        </div>
+
+    </footer>
+</body>
+</html>
+
+<script>
+// script.js
+
+// Inputvelden selecteren
+const form = document.getElementById('ticketForm');
+const nameInput = document.getElementById('name');
+const personsInput = document.getElementById('persons');
+const classInput = document.getElementById('class');
+const generateButton = document.getElementById('generateTicket');
+
+// Eventlistener: Maak ticket
+generateButton.addEventListener('click', async () => {
+  const name = nameInput.value;
+  const persons = parseInt(personsInput.value, 10);
+  const ticketClass = classInput.value;
+
+  if (!name || !persons || !ticketClass) {
+    alert('Vul alle velden in!');
+    return;
+  }
+
+  // Bestaande PDF laden
+  const templateBytes = await fetch('template.pdf').then((res) => res.arrayBuffer());
+  const pdfDoc = await PDFLib.PDFDocument.load(templateBytes);
+
+  // Eerste pagina aanpassen
+  const page = pdfDoc.getPage(0);
+  const { width, height } = page.getSize();
+
+  // Tekst toevoegen
+  const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Courier);
+  const fontSize = 12;
+
+  page.drawText(`${name}`, {
+    x: 45,
+    y: height - 400,
+    size: fontSize,
+    font,
+    color: PDFLib.rgb(1, 1, 1),
+  });
+
+  page.drawText(`${persons}`, {
+    x: 372,
+    y: height - 400,
+    size: fontSize,
+    font,
+    color: PDFLib.rgb(1, 1, 1),
+  });
+
+  page.drawText(`${ticketClass}`, {
+    x: 265,
+    y: height - 400,
+    size: fontSize,
+    font,
+    color: PDFLib.rgb(1, 1, 1),
+  });
+
+  // PDF opslaan en downloaden
+  const pdfBytes = await pdfDoc.save();
+  download(pdfBytes, 'Jouw boeking bij TAS.pdf', 'application/pdf');
+});
+
+// Download helper functie
+function download(data, filename, type) {
+  const blob = new Blob([data], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const steps = document.querySelectorAll('.step');
+      const progressSteps = document.querySelectorAll('.progress-step');
+      const nextBtn = document.querySelector('.next-btn');
+      const prevBtn = document.querySelector('.prev-btn');
+      const ticketForm = document.getElementById('ticketForm');
+      const successMessage = document.querySelector('.success-message');
+  
+      let currentStep = 0;
+  
+      function updateForm() {
+        steps.forEach((step, index) => {
+          step.classList.toggle('active', index === currentStep);
+        });
+  
+        progressSteps.forEach((step, index) => {
+          step.classList.toggle('active', index === currentStep);
+          step.classList.toggle('completed', index < currentStep);
+        });
+  
+        prevBtn.disabled = currentStep === 0;
+        nextBtn.textContent = currentStep === steps.length - 1 ? 'Verzenden' : 'Volgende';
+      }
+  
+      nextBtn.addEventListener('click', () => {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+        } else {
+          ticketForm.style.display = 'none';
+          successMessage.classList.add('active');
+        }
+        updateForm();
+      });
+  
+      prevBtn.addEventListener('click', () => {
+        if (currentStep > 0) {
+          currentStep--;
+        }
+        updateForm();
+      });
+  
+      updateForm();
+    });
+  </script>
+  
