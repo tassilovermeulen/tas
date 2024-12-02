@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/univers');
 /* reset */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -49,8 +50,6 @@ table {
 
 
 /* styles.css */
-
-@import url('https://fonts.cdnfonts.com/css/univers');
        
 :root {
     --TASrood: #D82331;
@@ -139,6 +138,7 @@ section:first-of-type {
 
 section {
     padding: 1.5em;
+    padding-bottom: 2em;
 }
 
 section h1 {
@@ -391,3 +391,49 @@ input, select {
     width: 124px;
   }
   
+  .ticker-wrap {
+    width: 100dvw;
+    height: 80px;
+    margin: 0 auto;
+    margin-left: -1.5em;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    bottom: 0;
+    height: 5rem;
+    background-color: var(--TASrood); 
+  }
+  .ticker {
+    display: inline-block;
+    margin-top: 1.5em;
+    animation: marquee 30s linear infinite;
+  }
+
+  .item {
+    display: inline-block;
+    padding: 0;
+    font-size: 2rem;
+    color: white;   
+    font-weight: 500;
+    margin-right: 3em;
+  }
+  
+  /* Transition */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0)
+    }
+    100% {
+      transform: translateX(-100%)
+    }
+  }
+  
+  @keyframes swap {
+    0%, 50% {
+      left: 0%;
+    }
+    50.01%,
+    100% {
+      left: 100%;
+    }
+  }
