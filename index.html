@@ -104,8 +104,14 @@
                 <a href="#">Reisplanner</a>
                 <a href="#">Lijnennet</a>
         </div>
-
     </footer>
+    <div id="overlay">
+        <div id="overlay-content">
+          <h1>stop!</h1>
+          <p>sorry ik had geen zin om desktopversie te maken. pak die pokkie van je</p>
+          <button id="close-overlay">oke isg</button>
+        </div>
+      </div>
 </body>
 
 </html>
@@ -230,3 +236,12 @@
         updateForm();
     });
 </script>
+
+<script>
+    const closeButton = document.getElementById('close-overlay');
+    const overlay = document.getElementById('overlay');
+
+    closeButton.addEventListener('click', function() {
+      overlay.style.display = 'none';
+    });
+  </script>
