@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/univers');
+@import url('https://fonts.cdnfonts.com/css/univers-lt-std');
 /* reset */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -61,7 +61,7 @@ table {
   }
 
 body {
-    font-family: univers, sans-serif;
+    font-family: 'Univers', sans-serif;
     margin: 0;
     padding: 0;
   }
