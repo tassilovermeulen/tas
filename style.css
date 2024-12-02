@@ -163,6 +163,9 @@ button {
     border-radius: 6px;
     font-size: 18px;
     font-weight: 700;
+    padding: 1em;
+    min-height: 2em;
+    cursor: pointer;
 }
 
 button img {
@@ -586,7 +589,7 @@ input, select {
   justify-content: flex-start;
   align-items: flex-start;
   height: auto;
-  min-height: 15vh;
+  min-height: 25vh;
   width: 100dvw;
   margin: 0;
   margin-left: -1.5em;
