@@ -490,6 +490,72 @@ input, select {
   #close-overlay:hover {
     background-color: #d62e31;
   }
+
+  table {
+    text-align: left;
+    font-family: 'Jersey 10';
+    font-size: 1.3em;
+    background: black;
+    width: 100dvw !important;
+    margin-left: -1.15em;
+    box-sizing: border-box;
+    }
+
+  td, th {
+    padding: .3em;
+  }
+
+
+  tr:first-of-type {
+    color: var(--TASrood);
+    border-bottom: var(--TASrood) 2px solid;
+  }
+
+  tr {
+    color: white;
+    padding: .3em;
+  }
+
+  #cancel {
+    color: var(--TASrood)
+  }
+
+  .vertrek{	
+    animation-name:blink;
+    animation-duration:1s;
+    animation-timing-function:linear;
+    animation-iteration-count:Infinite;
+    }
+
+    @keyframes blink{
+      0%{color:var(--TASrood);}
+      50%{color:black;}
+      100%{color:var(--TASrood);}}
+
+  .cancel{	
+        animation-name:cancel;
+        animation-duration:.4s;
+        animation-timing-function:linear;
+        animation-iteration-count:Infinite;
+        }
+    
+    @keyframes cancel{
+          0%{color:var(--TASrood);}
+          50%{color:black;}
+          100%{color:var(--TASrood);}}
+
+
+          .vertrokken {	
+            animation-name:vertrokken;
+            animation-duration:.9s;
+            animation-timing-function:linear;
+            animation-iteration-count:Infinite;
+            }
+        
+        @keyframes vertrokken{
+              0%{color:var(--TASgroen);}
+              50%{color:black;}
+              100%{color:var(--TASgroen);}}
   
   /* Media Query: Blokkeer voor schermen groter dan 780px */
   @media (min-width: 780px) {

@@ -4,13 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAS Rail Rotterdam - Home</title>
+    <title>TAS Rotterdam - Home</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Jersey+10&family=VT323&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
@@ -33,17 +37,48 @@
     <section id="welkom">
         <h1>— Welkom</h1>
         <p>TAS is onderweg voor jou. Samen werken we aan de beste reiservaring.</p>
-        <h3>Ons netwerk</h3>
-        <p>Het kan zijn dat we te maken krijgen met storingen in ons netwerk. We doen (matig) ons best om dit tot een minimum te beperken. Zo gaat de technische dienst tegenwoordig pas om 15:30 naar huis.</p>
+        <h3>Vertrektijden</h3>
+        <table>
+            <tr>
+              <th>LIJN</th>
+              <th>BESTEMMING</th>
+              <th>MIN</th>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>VIBES</td>
+                <td class="vertrokken">+++ VERTROKKEN +++</td>
+              </tr>
+            <tr>
+              <td>24</td>
+              <td>OUD WORDEN</td>
+              <td class="vertrek">0</td>
+            </tr>
+            <tr>
+              <td>24</td>
+              <td>AFSTUDEREN(?)</td>
+              <td class="vertrek">6</td>
+            </tr>
+            <tr>
+              <td>24</td>
+              <td>EEN MAN(?)</td>
+              <td class="cancel">+++ RIJDT NIET +++</td>
+            </tr>
+          </table>
         <h3>Huidige storingen</h3>
         <div class="ticker-wrap">
             <div class="ticker">
                 <span class="item-collection-1">
-                    <span class="item"><img src="cone.png" alt=""> BUS 294 ➜ Passagier heeft barfje gelegd, rituitval en 35 min vertraging.</span>
-                    <span class="item"><img src="cone.png" alt=""> TRAM 42 ➜ Conducteur loesoe. We gaan naar huis.</span>
-                    <span class="item"><img src="cone.png" alt=""> METRO G ➜ Stroomrekening niet betaald, we staan stil. Ik zou gaan fietsen...</span>
-                    <span class="item"><img src="cone.png" alt=""> TRAM 3 ➜ Oud vrouwtje tussen de deur gekomen, omleiding via begraafplaats "De Ouwe Doos".</span>
-                    <span class="item"><img src="cone.png" alt=""> METRO P ➜ Metroverkeer stilgelegd door loslopende pinguïn op het spoor. Is hier geen blijdorp halloooo?</span>
+                    <span class="item"><img src="cone.png" alt=""> BUS 294 ➜ Passagier heeft barfje gelegd, rituitval en
+                        35 min vertraging.</span>
+                    <span class="item"><img src="cone.png" alt=""> TRAM 42 ➜ Conducteur loesoe. We gaan naar
+                        huis.</span>
+                    <span class="item"><img src="cone.png" alt=""> METRO G ➜ Stroomrekening niet betaald, we staan stil.
+                        Ik zou gaan fietsen...</span>
+                    <span class="item"><img src="cone.png" alt=""> TRAM 3 ➜ Oud vrouwtje tussen de deur gekomen,
+                        omleiding via begraafplaats "De Ouwe Doos".</span>
+                    <span class="item"><img src="cone.png" alt=""> METRO P ➜ Metroverkeer stilgelegd door loslopende
+                        pinguïn op het spoor. Is hier geen blijdorp halloooo?</span>
                 </span>
             </div>
             <div>
@@ -111,11 +146,11 @@
     </footer>
     <div id="overlay">
         <div id="overlay-content">
-          <h1>stop!</h1>
-          <p>sorry ik had geen zin om desktopversie te maken. pak die pokkie van je</p>
-          <button id="close-overlay">oke isg</button>
+            <h1>stop!</h1>
+            <p>sorry ik had geen zin om desktopversie te maken. pak die pokkie van je</p>
+            <button id="close-overlay">oke isg</button>
         </div>
-      </div>
+    </div>
 </body>
 
 </html>
@@ -245,7 +280,7 @@
     const closeButton = document.getElementById('close-overlay');
     const overlay = document.getElementById('overlay');
 
-    closeButton.addEventListener('click', function() {
-      overlay.style.display = 'none';
+    closeButton.addEventListener('click', function () {
+        overlay.style.display = 'none';
     });
-  </script>
+</script>
